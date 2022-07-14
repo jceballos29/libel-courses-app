@@ -19,7 +19,7 @@ export const categories = [
   },
   {
     _id: 4,
-    name: 'Design',
+    name: 'Blender',
     courses: 100,
     image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/4.png'
   },
@@ -53,25 +53,46 @@ export const categories = [
 export const courses = [
   {
     _id: 0,
-    image: 'https://creativelayers.net/themes/educrat-html/img/coursesCards/1.png',
-    name: 'Learn Figma - UI/UX Design Essential Training',
-    slug: 'learn-figma-uiux-design-essential-training',
+    image: 'https://cdna.artstation.com/p/assets/images/images/039/550/388/large/ricardo-diaz-final-diddy-kong-logo.jpg?1626231644',
+    name: 'Blender para principiantes - Diddy Monkey',
+    slug: 'blender-para-principiantes-diddy-monkey',
     rating: 4.5,
     reviews: 1020,
     level: 'Principiante',
-    price: 20,
-    lessons: 12,
+    price: 39,
+    featured: true,
+    lessons: 11,
+    materials: 7,
+    feedbacks: 3,
     duration: {
       hours: 3,
       minutes: 30,
     },
     instructor: {
-      name: 'John Doe',
+      name: 'Ricardo Díaz',
       avatar: 'https://creativelayers.net/themes/educrat-html/img/general/avatar-1.png'
     },
     categories: [ 4 ],
     enrolledStudents: Array.from({ length: 120 }),
-    updatedAt: '2020-01-01',
+    updatedAt: '2022-07-14',
+    createdAt: '2022-07-12',
+    abstract: 'Vive una gran experiencia y aprende desde cero a crear fantásticos personajes en Blender. No necesitas conocimientos previos, lo ideal para comenzar con Blender.',
+    description: 'Crea personajes en Blender desde la escultura hasta la pintura. Afrontaremos una situación típica en la industria, partiendo de un concepto 2D y lo convertiremos en una escultura 3D.',
+    video: 'https://www.youtube.com/watch?v=qyG2LYBv_Ww&t=5s&ab_channel=LIBELACADEMY',
+    discord: 'https://discord.gg/r6UHQEtGrQ',
+    requirements: [
+      'Computador de gama media Core i7 (o similares) de 7ma generación con 16 de Ram.',
+      'Tarjeta de vídeo gt 1030 o gtx 1050.',
+      'Mouse o tabla digitalizadora.'
+    ],
+    whatYouLearn: [
+      'Lleváremos a 3D un personaje usando únicamente Blender. '
+    ],
+    audience: [
+      'Personas de 18 años en adelante.',
+      'Sentir afinidad por el diseño 3D o las artes gráficas en general.',
+      'Personas sin conocimientos en Blender.'
+    ],
   },
   {
     _id: 1,
@@ -93,7 +114,8 @@ export const courses = [
     },
     categories: [ 1 ],
     enrolledStudents: Array.from({ length: 120 }),
-    updatedAt: '2020-01-01',
+    updatedAt: '2022-07-14',
+    createdAt: '2020-07-12',
   },
   {
     _id: 2,

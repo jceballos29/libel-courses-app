@@ -17,7 +17,7 @@ const CourseCard = ({ course }) => {
         <img
           src={course.image}
           alt={course.name}
-          className='w-full h-full object-cover object-center group-hover:scale-125 duration-300'
+          className='w-full h-full object-fill object-center group-hover:scale-125 duration-300'
         />
         <div className='absolute w-full h-full top-0 left-0 group-hover:bg-[#140342]/50 duration-300'></div>
       </figure>

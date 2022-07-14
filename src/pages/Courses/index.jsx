@@ -9,7 +9,7 @@ import { courses } from 'utils/backend';
 const Courses = () => {
   return (
     <section className='mt-16'>
-      <div className='bg-[#E5F0FD] w-full h-12'>
+      <div className='bg-[#F5F7FE] w-full h-12'>
         <div className='container h-full flex items-center space-x-4'>
           <Link
             to={path.home}

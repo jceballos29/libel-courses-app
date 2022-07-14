@@ -103,7 +103,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className='section bg-[#E5F0FD] rounded-2xl text-[#140342]'>
+        <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
           <div className='container'>
             <div className='mb-10 lg:mb-16 flex flex-col items-start justify-between lg:flex-row lg:items-center'>
               <div className='mb-4 lg:mb-0 w-full'>
@@ -143,7 +143,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className='section bg-[#E5F0FD] rounded-2xl text-[#140342]'>
+        <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
           <div className='container'>
             <div className='mb-10 lg:mb-16 flex flex-col items-start justify-between lg:flex-row lg:items-center'>
               <div className='mb-4 lg:mb-0'>
@@ -267,7 +267,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className='section bg-[#E5F0FD] rounded-2xl text-[#140342]'>
+        <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
           <div className='container flex flex-col items-center justify-center'>
             <h2>Membresías</h2>
             <p>Aprende todo en un mismo lugar.</p>
