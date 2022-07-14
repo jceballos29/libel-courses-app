@@ -1,13 +1,58 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #6440fd #1f2937;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #6440fd;
+    border-radius: 4px;
+    border: 2px solid #1f2937;
+  }
+
+@layer base {
+
+  body {
+    @apply text-[#140342] bg-[#F7F8FB] tracking-wide;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold capitalize leading-relaxed
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto max-w-screen-xl px-4
+  }
+
+  .section {
+    @apply py-12 md:py-28  overflow-hidden
+  }
 }
