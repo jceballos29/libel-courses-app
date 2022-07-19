@@ -92,8 +92,8 @@ const Footer = () => {
         </div>
         <div className='w-full py-6 text-xs border-t border-gray-200/10 flex items-center justify-center flex-col md:flex-row md:justify-between text-gray-400'>
           <p className='flex flex-col lg:flex-row items-center mb-4 lg:mb-0'>
-            &copy; {new Date().getFullYear()} Libel Academy.{' '}
-            <span>Todos los derechos reservados.</span>
+            &copy; {new Date().getFullYear()} Libel Academy.
+            <span className="lg:ml-2">Todos los derechos reservados.</span>
           </p>
           <div className='flex items-center gap-5'>
             <Link

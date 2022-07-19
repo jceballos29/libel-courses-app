@@ -267,7 +267,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
+        <section className='section bg-[#F5F7FE]  rounded-2xl text-[#140342]'>
           <div className='container flex flex-col items-center justify-center'>
             <h2>Membresías</h2>
             <p>Aprende todo en un mismo lugar.</p>
