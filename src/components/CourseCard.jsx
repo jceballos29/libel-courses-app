@@ -48,7 +48,7 @@ const CourseCard = ({ course }) => {
               className='text-[#6A7A99] mr-1'
             />
             <p className='text-xs leading-none'>
-              {course.lessons} Lessons
+              {course.lessons.length} Lessons
             </p>
           </div>
           <div className='flex items-center'>

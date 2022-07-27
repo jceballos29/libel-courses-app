@@ -14,11 +14,15 @@ import {
 } from 'react-icons/hi';
 
 import MainLayout from 'components/layouts/MainLayout';
-import Course from 'pages/Courses/Course';
 
 const Home = lazy(() => import('pages/Home'));
 const Categories = lazy(() => import('pages/Categories'));
 const Courses = lazy(() => import('pages/Courses'));
+const Course = lazy(() => import('pages/Courses/Course'));
+const Lessons = lazy(() => import('pages/Courses/Lessons'));
+const Lesson = lazy(() => import('pages/Courses/Lesson'));
+const Feedbacks = lazy(() => import('pages/Courses/Feedbacks'));
+const Feedback = lazy(() => import('pages/Courses/Feedback'));
 const Login = lazy(() => import('pages/Login'));
 const Register = lazy(() => import('pages/Register'));
 const PrivacyPolicy = lazy(() => import('pages/PrivacyPolicy'));
@@ -74,10 +78,27 @@ const AppRoutes = () => {
         <Route path={path.courses} element={<Courses />} />
         <Route path={`${path.courses}/:slug`} element={<Course />} />
         <Route path={path.categories} element={<Categories />} />
+        <Route
+          // path={`${path.courses}/:slug/clases`}
+          element={<Lessons />}>
+          <Route
+            path={`${path.courses}/:slug/clases/:number`}
+            element={<Lesson />}
+          />
+        </Route>
+        <Route element={<Feedbacks />} >
+          <Route path={`${path.courses}/:slug/feedbacks/:number`} element={<Feedback />} />
+        </Route>
         <Route path={path.login} element={<Login />} />
         <Route path={path.register} element={<Register />} />
-        <Route path={path.privacy_policy} element={<PrivacyPolicy />} />
-        <Route path={path.terms_and_conditions} element={<TermsConditions />} />
+        <Route
+          path={path.privacy_policy}
+          element={<PrivacyPolicy />}
+        />
+        <Route
+          path={path.terms_and_conditions}
+          element={<TermsConditions />}
+        />
         <Route path={'*'} element={<NotFound />} />
       </Route>
     </Routes>

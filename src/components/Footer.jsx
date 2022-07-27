@@ -68,9 +68,9 @@ const Footer = () => {
             <h3 className='uppercase font-medium mb-4'>Categorías</h3>
             <ul className='pl-4 grid grid-cols-2 lg:grid-cols-3 gap-2'>
               {
-                categories.map((category) => (
+                categories.map((category, index) => (
                   <li
-                  key={category.id}
+                  key={index}
                   className='capitalize text-left text-sm font-light text-gray-400 cursor-pointer hover:text-gray-600'>
                   {category.name}
                 </li>

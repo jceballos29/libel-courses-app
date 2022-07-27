@@ -34,6 +34,9 @@ import memberships from 'utils/memberships';
 import { categories, courses } from 'utils/backend';
 
 const Home = () => {
+
+  
+
   return (
     <div>
       <header
