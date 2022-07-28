@@ -13,6 +13,15 @@ import {
   // HiOutlineUsers,
 } from 'react-icons/hi';
 
+import {
+  IoSchool,
+  IoTrophy,
+  IoBookmark,
+  IoBan,
+  IoRibbon,
+  IoReceipt
+} from 'react-icons/io5';
+
 import MainLayout from 'components/layouts/MainLayout';
 
 const Home = lazy(() => import('pages/Home'));
@@ -27,6 +36,15 @@ const Login = lazy(() => import('pages/Login'));
 const Register = lazy(() => import('pages/Register'));
 const PrivacyPolicy = lazy(() => import('pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('pages/TermsConditions'));
+
+const UserPortal = lazy(() => import('pages/User'));
+const UserProcess = lazy(() => import('pages/User/pages/Process'));
+const UserComplete = lazy(() => import('pages/User/pages/Complete'));
+const UserFavorite = lazy(() => import('pages/User/pages/Favorites'));
+const UserExpired = lazy(() => import('pages/User/pages/Expired'));
+const UserCertificates = lazy(() => import('pages/User/pages/Certificates'));
+const UserReceipts = lazy(() => import('pages/User/pages/Receipts'));
+
 const NotFound = lazy(() => import('pages/NotFound'));
 
 export const path = {
@@ -37,6 +55,13 @@ export const path = {
   register: '/registro',
   privacy_policy: '/politica-de-privacidad',
   terms_and_conditions: '/terminos-y-condiciones',
+  portal: '/portal',
+  process: '/portal/proceso',
+  completed: '/portal/completados',
+  favorites: '/portal/favoritos',
+  expired: '/portal/expirados',
+  certificates: '/portal/certificados',
+  receipts: '/portal/recibos',
 };
 
 export const navigation = {
@@ -68,6 +93,56 @@ export const navigation = {
       Icon: HiOutlineHome,
     },
   ],
+  user: [
+    {
+      id: 'courses',
+      title: 'Cursos',
+      items: [
+        {
+          id: 'process',
+          label: 'En Proceso',
+          to: path.process,
+          Icon: IoSchool,
+        },
+        {
+          id: 'complete',
+          label: 'Finalizados',
+          to: path.completed,
+          Icon: IoTrophy,
+        },
+        {
+          id: 'bookmarks',
+          label: 'Favoritos',
+          to: path.favorites,
+          Icon: IoBookmark,
+        },
+        {
+          id: 'expired',
+          label: 'Expirados',
+          to: path.expired,
+          Icon: IoBan,
+        }
+      ]
+    },
+    {
+      id: 'services',
+      title: 'Servicios',
+      items: [
+        {
+          id: 'certificates',
+          label: 'Certificados',
+          to: path.certificates,
+          Icon: IoRibbon,
+        },
+        {
+          id: 'receipts',
+          label: 'Recibos',
+          to: path.receipts,
+          Icon: IoReceipt,
+        }
+      ]
+    }
+  ]
 };
 
 const AppRoutes = () => {
@@ -89,6 +164,16 @@ const AppRoutes = () => {
         <Route element={<Feedbacks />} >
           <Route path={`${path.courses}/:slug/feedbacks/:number`} element={<Feedback />} />
         </Route>
+
+        <Route path={path.portal} element={<UserPortal />} >
+          <Route path={path.process} element={<UserProcess />} />
+          <Route path={path.completed} element={<UserComplete />} />
+          <Route path={path.favorites} element={<UserFavorite />} />
+          <Route path={path.expired} element={<UserExpired />} />
+          <Route path={path.certificates} element={<UserCertificates />} />
+          <Route path={path.receipts} element={<UserReceipts />} />
+        </Route>
+
         <Route path={path.login} element={<Login />} />
         <Route path={path.register} element={<Register />} />
         <Route

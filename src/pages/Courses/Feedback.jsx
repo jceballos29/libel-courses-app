@@ -30,7 +30,7 @@ const Feedback = () => {
           height='100%'
           className='react-player'
           url={feedback.video}
-          // playing={true}
+          playing={true}
           controls={true}
         />
         {/* <iframe src="https://player.vimeo.com/video/683923972"  width="100%" height="100%" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}

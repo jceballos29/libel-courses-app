@@ -32,11 +32,11 @@ import { Link } from 'react-router-dom';
 import { path } from 'routes';
 import memberships from 'utils/memberships';
 import { categories, courses } from 'utils/backend';
+import { primaryNews, secondaryNews } from 'utils/news';
+import SecondaryNewCard from 'components/SecondaryNewCard';
+import PrimaryNewCard from 'components/PrimaryNewCard';
 
 const Home = () => {
-
-  
-
   return (
     <div>
       <header
@@ -141,7 +141,10 @@ const Home = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
               {categories.map((category) => (
-                <CategoryCard key={category._id} category={category} />
+                <CategoryCard
+                  key={category._id}
+                  category={category}
+                />
               ))}
             </div>
           </div>
@@ -154,11 +157,11 @@ const Home = () => {
                 {/* <p>Lorem ipsum dolor sit amet, consectetur.</p> */}
               </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 justify-items-center content-center'>
+            {/* <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 justify-items-center content-center'>
               {Array.from({ length: 4 }).map((_, index) => (
                 <FeaturedProjectCard key={index} />
               ))}
-            </div>
+            </div> */}
           </div>
         </section>
         <section className='section border-b'>
@@ -283,89 +286,20 @@ const Home = () => {
         </section>
         <section className='section'>
           <div className='container flex flex-col items-center justify-center mb-16'>
-            <h2 className='mb-4'>News & Events</h2>
-            <p>10,000+ unique online course list designs</p>
+            <h2 className='mb-4'>Próximamente</h2>
           </div>
-          <div className='flex flex-wrap items-star justify-center gap-5 gap-y-10'>
-            <div className='w-full max-w-[410px] h-[488px]'>
-              <figure className='w-full h-3/4 rounded-lg overflow-hidden bg-gray-300 mb-3'></figure>
-              <div className='w-full h-1/4 flex flex-col items-start'>
-                <h5 className='uppercase text-[#6440FB] text-sm font-medium mb-2'>
-                  Education
-                </h5>
-                <h3 className='text-[#242239] text-xl mb-1'>
-                  Eco-Education in Our Lives: We Can Change the Future
-                </h3>
-                <p className='text-sm text-[#4F547B]'>
-                  December 16, 2022
-                </p>
-              </div>
-            </div>
-            <div className='w-full max-w-[410px] h-[488px]'>
-              <figure className='w-full h-3/4 rounded-lg overflow-hidden bg-gray-300 mb-3'></figure>
-              <div className='w-full h-1/4 flex flex-col items-start'>
-                <h5 className='uppercase text-[#6440FB] text-sm font-medium mb-2'>
-                  Education
-                </h5>
-                <h3 className='text-[#242239] text-xl mb-1'>
-                  Eco-Education in Our Lives: We Can Change the Future
-                </h3>
-                <p className='text-sm text-[#4F547B]'>
-                  December 16, 2022
-                </p>
-              </div>
-            </div>
-            <div className='w-full max-w-[410px] md:max-w-[840px] 2xl:max-w-[410px] grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 gap-5 justify-items-start'>
-              <div className='group flex'>
-                <div className='mr-5 rounded-lg w-24 h-24 bg-[#E5F0FD] flex flex-col items-center justify-center group-hover:bg-[#6440FB] group-hover:text-white'>
-                  <h3 className='text-3xl'>15</h3>
-                  <p className='font-medium'>JUNE</p>
-                </div>
-                <div className='h-24 flex flex-col items-start justify-evenly'>
-                  <p className='uppercase font-medium text-[#6440FB] text-sm'>
-                    Courses
-                  </p>
-                  <h4>Medical Chemistry: The Molecular Basis</h4>
-                </div>
-              </div>
-              <div className='group flex'>
-                <div className='mr-5 rounded-lg w-24 h-24 bg-[#E5F0FD] flex flex-col items-center justify-center group-hover:bg-[#6440FB] group-hover:text-white'>
-                  <h3 className='text-3xl'>15</h3>
-                  <p className='font-medium'>JUNE</p>
-                </div>
-                <div className='h-24 flex flex-col items-start justify-evenly'>
-                  <p className='uppercase font-medium text-[#6440FB] text-sm'>
-                    Courses
-                  </p>
-                  <h4 className='text-base'>
-                    Medical Chemistry: The Molecular Basis
-                  </h4>
-                </div>
-              </div>
-              <div className='group flex'>
-                <div className='mr-5 rounded-lg w-24 h-24 bg-[#E5F0FD] flex flex-col items-center justify-center group-hover:bg-[#6440FB] group-hover:text-white'>
-                  <h3 className='text-3xl'>15</h3>
-                  <p className='font-medium'>JUNE</p>
-                </div>
-                <div className='h-24 flex flex-col items-start justify-evenly'>
-                  <p className='uppercase font-medium text-[#6440FB] text-sm'>
-                    Courses
-                  </p>
-                  <h4>Medical Chemistry: The Molecular Basis</h4>
-                </div>
-              </div>
-              <div className='group flex'>
-                <div className='mr-5 rounded-lg w-24 h-24 bg-[#E5F0FD] flex flex-col items-center justify-center group-hover:bg-[#6440FB] group-hover:text-white'>
-                  <h3 className='text-3xl'>15</h3>
-                  <p className='font-medium'>JUNE</p>
-                </div>
-                <div className='h-24 flex flex-col items-start justify-evenly'>
-                  <p className='uppercase font-medium text-[#6440FB] text-sm'>
-                    Courses
-                  </p>
-                  <h4>Medical Chemistry: The Molecular Basis</h4>
-                </div>
-              </div>
+          <div className='flex flex-wrap items-star justify-center gap-5 gap-y-10 '>
+            {
+              primaryNews.map( element => (
+                <PrimaryNewCard key={element.id} element={element} />
+              ))
+            }
+            <div className='w-full max-w-[410px] md:max-w-[840px] 2xl:max-w-[410px] grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 space-y-5 justify-items-start'>
+              {
+                secondaryNews.map( secondary => (
+                  <SecondaryNewCard key={secondary.id} element={secondary} />
+                ))
+              }
             </div>
           </div>
         </section>
