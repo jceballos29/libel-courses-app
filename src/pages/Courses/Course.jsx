@@ -482,7 +482,7 @@ const Course = () => {
                           {course.feedbacks.map((feedback) => (
                             <li key={feedback._id}>
                               <Link
-                                to={`${path.courses}/${course.slug}/feedbacks`}
+                                to={`${path.courses}/${course.slug}/feedbacks/${feedback.number}`}
                                 className='flex items-center cursor-pointer hover:bg-purple-100 p-1 rounded group'>
                                 <IoMegaphone
                                   size={18}

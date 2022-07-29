@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/lazy';
 import { Link, useParams } from 'react-router-dom';
 import { path } from 'routes';
 import { courses } from 'utils/backend';
+import { MdMenuOpen } from 'react-icons/md';
 
 const Lesson = () => {
   const { slug, number } = useParams();
@@ -37,22 +38,26 @@ const Lesson = () => {
         {/* <iframe src="https://player.vimeo.com/video/683923972"  width="100%" height="100%" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
       </figure>
       <div className='mt-4 lg:pl-1'>
-        <div className='w-full flex items-center justify-between mb-4 '>
+        <div className='w-full flex flex-col-reverse lg:flex-row lg:items-center lg:justify-between mb-4 lg:mb-8'>
           <h3 className='text-2xl font-bold '>{lesson.title}</h3>
-          {lesson.number === course.lessons.length ? (
-            <button className='px-4 py-2 cursor-pointer rounded bg-purple-800 text-white font-medium hover:bg-purple-900'>
-            Completar
-          </button>
-            
-          ) : (
-            <Link
-              to={`${path.courses}/${course.slug}/clases/${
-                lesson.number + 1
-              }`}
-              className='px-4 py-2 cursor-pointer rounded bg-purple-800 text-white font-medium hover:bg-purple-900'>
-              Completar y Continuar
-            </Link>
-          )}
+          <div className='flex items-center space-x-3 lg:space-x-0 mb-8 lg:mb-0'>
+            <button className='lg:hidden p-2 cursor-pointer rounded bg-purple-800 text-white font-medium hover:bg-purple-900'>
+              <MdMenuOpen size={24}/>
+            </button>
+            {lesson.number === course.lessons.length ? (
+              <button className='px-4 py-2 cursor-pointer rounded bg-purple-800 text-white font-medium hover:bg-purple-900'>
+                Completar
+              </button>
+            ) : (
+              <Link
+                to={`${path.courses}/${course.slug}/clases/${
+                  lesson.number + 1
+                }`}
+                className='px-4 py-2 cursor-pointer rounded bg-purple-800 text-white font-medium hover:bg-purple-900'>
+                Completar y Continuar
+              </Link>
+            )}
+          </div>
         </div>
         <p className='text-[#4F547B]'>{lesson.description}</p>
       </div>

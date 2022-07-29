@@ -128,6 +128,19 @@ export const courses = [
         },
         video: 'https://player.vimeo.com/video/683926573',
       },
+      {
+        _id: 1,
+        number: 2,
+        date: '2020-01-08',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis metus vel velit laoreet blandit. Nunc ornare enim nec lectus cursus convallis. Nullam eget pharetra quam Proin eu nisl quis eros maximus pellentesque nec non sem. Cras nec tempus mi. Mauris commodo, ante vel feugiat commodo, magna orci ornare risus, at commodo mauris metus et felis.',
+        duration: {
+          hours: 0,
+          minutes: 57,
+          seconds: 26,
+        },
+        video: 'https://player.vimeo.com/video/683926573',
+      },
     ],
     duration: {
       hours: 3,

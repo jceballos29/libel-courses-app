@@ -5,13 +5,14 @@ import {
   HiOutlineClock,
   HiOutlineDocumentText,
 } from 'react-icons/hi';
+import { IoBookmarkOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
 
 const CourseCard = ({ course }) => {
   return (
-    <Link
-      to={`${path.courses}/${course.slug}`}
+    <div
+      // to={`${path.courses}/${course.slug}`}
       className='group w-full rounded overflow-hidden shadow border bg-white'>
       <figure className='relative w-full h-[210px] bg-gray-300 overflow-hidden'>
         <img
@@ -19,18 +20,44 @@ const CourseCard = ({ course }) => {
           alt={course.name}
           className='w-full h-full object-fill object-center group-hover:scale-125 duration-300'
         />
-        <div className='absolute w-full h-full top-0 left-0 group-hover:bg-[#140342]/50 duration-300'/>
+        <div className='absolute w-full h-full top-0 left-0 group-hover:bg-[#140342]/50 duration-300' />
+        <div className='absolute w-8 h-8 bg-white top-2 left-2 rounded cursor-pointer flex items-center justify-center z-[1]'>
+          <IoBookmarkOutline size={20} />
+        </div>
+        <div className='absolute bottom-2 left-2 flex items-center space-x-1'>
+          {course.featured && (
+            <span className='text-[10px] text-white font-medium bg-purple-800 rounded-full px-2 py-1'>
+              Destacado
+            </span>
+          )}
+          {new Date(
+            new Date().setDate(new Date().getDate() - 30)
+          ).getTime() < new Date(course.createdAt).getTime() && (
+            <span className='text-[10px] text-white font-medium bg-pink-600 rounded-full px-2 py-1'>
+              Nuevo
+            </span>
+          )}
+          {course.enrolledStudents.length > 100 && (
+            <span className='text-[10px] text-white font-medium bg-indigo-600 rounded-full px-2 py-1'>
+              Popular
+            </span>
+          )}
+        </div>
       </figure>
       <div className='w-full relative px-3 py-2 grid'>
         <div className='flex items-center text-xs gap-3 mb-2'>
           <span className='text-[#E59819]'>{course.rating}</span>
           <div className='flex items-center gap-1 text-[#E59819]'>
-            {Array.from({ length: Math.floor(course.rating) }).map((_, i) => (
-              <span key={i}>
-                <AiFillStar />
-              </span>
-            ))}
-            {Array.from({ length: 5 - Math.floor(course.rating) }).map((_, i) => (
+            {Array.from({ length: Math.floor(course.rating) }).map(
+              (_, i) => (
+                <span key={i}>
+                  <AiFillStar />
+                </span>
+              )
+            )}
+            {Array.from({
+              length: 5 - Math.floor(course.rating),
+            }).map((_, i) => (
               <span key={i}>
                 <AiOutlineStar />
               </span>
@@ -38,9 +65,11 @@ const CourseCard = ({ course }) => {
           </div>
           <span className='text-[#4F547B]'>({course.reviews})</span>
         </div>
-        <h4 className='h-[80px] font-semibold mb-2 group-hover:text-[#6440FB] duration-300'>
+        <Link
+          to={`${path.courses}/${course.slug}`}
+          className='cursor-pointer h-[60px] font-semibold mb-2 group-hover:text-[#6440FB] hover:underline duration-300'>
           {course.name}
-        </h4>
+        </Link>
         <div className='text-[#4F547B] w-full flex items-center justify-between'>
           <div className='flex items-center'>
             <HiOutlineDocumentText
@@ -84,7 +113,7 @@ const CourseCard = ({ course }) => {
           <h5>${course.price}</h5>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

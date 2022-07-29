@@ -26,7 +26,7 @@ const Lessons = () => {
         <title>{course.name}</title>
         <meta name='description' content={course.abstract} />
       </Helmet>
-      <div className='bg-[#F5F7FE] hidden lg:block bg-white w-full h-12'>
+      <div className='bg-[#F5F7FE] hidden lg:block  w-full h-12'>
         <div className='container h-full flex flex-wrap items-center space-x-4'>
           <Link
             to={path.home}
