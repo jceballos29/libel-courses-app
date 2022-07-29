@@ -17,7 +17,7 @@ import {
   IoSchool,
   IoTrophy,
   IoBookmark,
-  IoBan,
+  // IoBan, 
   IoRibbon,
   IoReceipt
 } from 'react-icons/io5';
@@ -38,10 +38,11 @@ const PrivacyPolicy = lazy(() => import('pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('pages/TermsConditions'));
 
 const UserPortal = lazy(() => import('pages/User'));
+const UserDashboard = lazy(() => import('pages/User/pages/Dashboard'));
 const UserProcess = lazy(() => import('pages/User/pages/Process'));
 const UserComplete = lazy(() => import('pages/User/pages/Complete'));
 const UserFavorite = lazy(() => import('pages/User/pages/Favorites'));
-const UserExpired = lazy(() => import('pages/User/pages/Expired'));
+// const UserExpired = lazy(() => import('pages/User/pages/Expired'));
 const UserCertificates = lazy(() => import('pages/User/pages/Certificates'));
 const UserReceipts = lazy(() => import('pages/User/pages/Receipts'));
 
@@ -58,8 +59,8 @@ export const path = {
   portal: '/portal',
   process: '/portal/proceso',
   completed: '/portal/completados',
-  favorites: '/portal/favoritos',
-  expired: '/portal/expirados',
+  favorites: '/portal/lista-de-deseos',
+  // expired: '/portal/expirados',
   certificates: '/portal/certificados',
   receipts: '/portal/recibos',
 };
@@ -112,16 +113,16 @@ export const navigation = {
         },
         {
           id: 'bookmarks',
-          label: 'Favoritos',
+          label: 'Lista de Deseos',
           to: path.favorites,
           Icon: IoBookmark,
         },
-        {
-          id: 'expired',
-          label: 'Expirados',
-          to: path.expired,
-          Icon: IoBan,
-        }
+        // {
+        //   id: 'expired',
+        //   label: 'Expirados',
+        //   to: path.expired,
+        //   Icon: IoBan,
+        // }
       ]
     },
     {
@@ -166,10 +167,11 @@ const AppRoutes = () => {
         </Route>
 
         <Route path={path.portal} element={<UserPortal />} >
+          <Route index element={<UserDashboard />} />
           <Route path={path.process} element={<UserProcess />} />
           <Route path={path.completed} element={<UserComplete />} />
           <Route path={path.favorites} element={<UserFavorite />} />
-          <Route path={path.expired} element={<UserExpired />} />
+          {/* <Route path={path.expired} element={<UserExpired />} /> */}
           <Route path={path.certificates} element={<UserCertificates />} />
           <Route path={path.receipts} element={<UserReceipts />} />
         </Route>

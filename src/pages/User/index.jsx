@@ -6,58 +6,73 @@ import {
   IoLocationOutline,
   IoMailOutline,
   IoPhonePortraitOutline,
+  IoPodium,
 } from 'react-icons/io5';
 import { NavLink, Outlet } from 'react-router-dom';
-import { navigation } from 'routes';
+import { navigation, path } from 'routes';
 import classNames from 'utils/classNames';
 
 const index = () => {
   return (
-    <section className='py-16'>
+    <section className='py-16 bg-[#F7F8FB]'>
       <Helmet>
         <title>Mi Portal</title>
         <meta name='description' content='Cursos' />
       </Helmet>
       <div className='container flex flex-col space-y-5'>
-        <header className='mt-4 p-12 overflow-hidden bg-[#F5F7FE] rounded-xl text-[#140342] flex flex-col items-center space-y-8 lg:space-y-0 justify-center lg:flex-row  lg:justify-between'>
+        <header className='mt-4 p-12 overflow-hidden bg-[#6440FB] rounded-xl text-white flex flex-col items-center space-y-8 lg:space-y-0 justify-center lg:flex-row  lg:justify-between'>
           <div className='flex flex-col lg:flex-row lg:space-x-5 space-y-5 lg:space-y-0 items-center justify-center'>
             <figure className='w-32 h-32 rounded-full bg-gray-500 overflow-hidden'></figure>
             <div className='flex flex-col items-center justify-center text-center lg:text-left lg:justify-start lg:items-start'>
-              <h3 className='text-2xl mb-3'>Angie Cardenas</h3>
-              <p className='flex items-center text-[#4F547B]'>
+              <h2 className='mb-3'>Angie Cardenas</h2>
+              <p className='flex items-center'>
                 <IoMailOutline
                   size={18}
-                  className='mr-2 text-[#140342] hidden lg:block'
+                  className='mr-2 text-white hidden lg:block'
                 />{' '}
                 angiecarde10@hotmail.com
               </p>
-              <p className='flex items-center text-[#4F547B]'>
+              <p className='flex items-center '>
                 <IoPhonePortraitOutline
                   size={18}
-                  className='mr-2 text-[#140342] hidden lg:block'
+                  className='mr-2 tet-white hidden lg:block'
                 />
                 +573112123450
               </p>
-              <p className='flex items-center text-[#4F547B]'>
+              <p className='flex items-center'>
                 <IoLocationOutline
                   size={18}
-                  className='mr-2 text-[#140342] hidden lg:block'
+                  className='mr-2 text-white hidden lg:block'
                 />{' '}
                 Bogotá, Colombia
               </p>
             </div>
           </div>
           <div className='w-full lg:max-w-max flex flex-col space-y-2'>
-            <button className='px-4 py-2 bg-[#1A064F] text-white font-medium rounded cursor-pointer'>
+            <button className='px-4 py-2 bg-[#00FF84] text-[#1A064F] text-sm font-medium rounded cursor-pointer'>
               Perfil
             </button>
-            <button className='px-4 py-2 bg-[#1A064F] text-white font-medium rounded cursor-pointer'>
+            <button className='px-4 py-2 bg-[#00FF84] text-[#1A064F] text-sm font-medium rounded cursor-pointer'>
               Contraseña
             </button>
           </div>
         </header>
-        <div className='w-full h-full flex space-x-5'>
-          <aside className='h-full w-60 p-4'>
+        <div className='w-full h-full flex lg:space-x-5'>
+          <aside className='hidden lg:block h-full w-60 px-4'>
+            <NavLink
+              end
+              to={path.portal}
+              className={({ isActive }) =>
+                classNames(
+                  'mb-6 px-4 py-2 rounded text-sm flex items-center cursor-pointer group hover:bg-[#1A064F] hover:text-white duration-150',
+                  isActive
+                    ? 'bg-[#1A064F] text-white'
+                    : 'text-[#4F547B]'
+                )
+              }>
+              <IoPodium size={20} className='mr-3' />
+              <span>Dashboard</span>
+            </NavLink>
             {navigation.user.map((section) => (
               <div key={section.id} className='w-full mb-6'>
                 <div className='flex items-center space-x-4 mb-3'>

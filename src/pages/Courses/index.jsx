@@ -1,6 +1,6 @@
 /** @format */
 
-import CourseCard from 'components/CourseCard';
+import CourseCard from 'components/cards/CourseCard';
 import { IoEllipse } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';

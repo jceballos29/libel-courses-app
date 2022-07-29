@@ -23,22 +23,30 @@ import line2 from 'images/Line 2.png';
 import line1Webp from 'images/Line-1.webp';
 import line2Webp from 'images/Line-2.webp';
 
-import CategoryCard from 'components/CategoryCard';
-import CourseCard from 'components/CourseCard';
-import InstructorCard from 'components/InstructorCard';
-import FeaturedProjectCard from 'components/FeaturedProjectCard';
-import PricingCard from 'components/PricingCard';
+import CategoryCard from 'components/cards/CategoryCard';
+import CourseCard from 'components/cards/CourseCard';
+import InstructorCard from 'components/cards/InstructorCard';
+import FeaturedProjectCard from 'components/cards/FeaturedProjectCard';
+import PricingCard from 'components/cards/PricingCard';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
 import memberships from 'utils/memberships';
 import { categories, courses } from 'utils/backend';
 import { primaryNews, secondaryNews } from 'utils/news';
-import SecondaryNewCard from 'components/SecondaryNewCard';
-import PrimaryNewCard from 'components/PrimaryNewCard';
+import SecondaryNewCard from 'components/cards/SecondaryNewCard';
+import PrimaryNewCard from 'components/cards/PrimaryNewCard';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Libel Academy</title>
+        <meta
+          name='description'
+          content='Academia Online - Aprende 3D desde cero. Desde cualquier dispositivo. Desde cualquier lugar.'
+        />
+      </Helmet>
       <header
         className='w-full bg-gray-200 relative text-white bg-no-repeat bg-cover bg-top-center'
         style={{
@@ -289,17 +297,16 @@ const Home = () => {
             <h2 className='mb-4'>Próximamente</h2>
           </div>
           <div className='flex flex-wrap items-star justify-center gap-5 gap-y-10 '>
-            {
-              primaryNews.map( element => (
-                <PrimaryNewCard key={element.id} element={element} />
-              ))
-            }
+            {primaryNews.map((element) => (
+              <PrimaryNewCard key={element.id} element={element} />
+            ))}
             <div className='w-full max-w-[410px] md:max-w-[840px] 2xl:max-w-[410px] grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 space-y-5 justify-items-start'>
-              {
-                secondaryNews.map( secondary => (
-                  <SecondaryNewCard key={secondary.id} element={secondary} />
-                ))
-              }
+              {secondaryNews.map((secondary) => (
+                <SecondaryNewCard
+                  key={secondary.id}
+                  element={secondary}
+                />
+              ))}
             </div>
           </div>
         </section>

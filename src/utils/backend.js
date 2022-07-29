@@ -1,24 +1,24 @@
 /** @format */
 
 export const categories = [
-  // {
-  //   _id: 1,
-  //   name: 'Software Development',
-  //   courses: 200,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/1.png'
-  // },
-  // {
-  //   _id: 2,
-  //   name: 'Web Development',
-  //   courses: 20,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/2.png'
-  // },
-  // {
-  //   _id: 3,
-  //   name: 'Mobile Development',
-  //   courses: 10,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/3.png'
-  // },
+  {
+    _id: 1,
+    name: 'Software Development',
+    courses: 200,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/1.png'
+  },
+  {
+    _id: 2,
+    name: 'Web Development',
+    courses: 20,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/2.png'
+  },
+  {
+    _id: 3,
+    name: 'Mobile Development',
+    courses: 10,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/3.png'
+  },
   {
     _id: 4,
     name: 'Blender',
@@ -26,30 +26,30 @@ export const categories = [
     image:
       'https://creativelayers.net/themes/educrat-html/img/home-2/categories/4.png',
   },
-  // {
-  //   _id: 5,
-  //   name: 'Marketing',
-  //   courses: 50,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/5.png'
-  // },
-  // {
-  //   _id: 6,
-  //   name: 'Photography',
-  //   courses: 30,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/6.png'
-  // },
-  // {
-  //   _id: 7,
-  //   name: 'Writing',
-  //   courses: 80,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/7.png'
-  // },
-  // {
-  //   _id: 8,
-  //   name: 'Business',
-  //   courses: 60,
-  //   image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/1.png'
-  // }
+  {
+    _id: 5,
+    name: 'Marketing',
+    courses: 50,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/5.png'
+  },
+  {
+    _id: 6,
+    name: 'Photography',
+    courses: 30,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/6.png'
+  },
+  {
+    _id: 7,
+    name: 'Writing',
+    courses: 80,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/7.png'
+  },
+  {
+    _id: 8,
+    name: 'Business',
+    courses: 60,
+    image: 'https://creativelayers.net/themes/educrat-html/img/home-2/categories/1.png'
+  }
 ];
 
 export const courses = [
@@ -144,8 +144,8 @@ export const courses = [
     },
     categories: [4],
     enrolledStudents: Array.from({ length: 120 }),
-    updatedAt: '2022-07-14',
-    createdAt: '2022-07-12',
+    updatedAt: '2022-07-28',
+    createdAt: '2022-07-26',
     abstract:
       'Vive una gran experiencia y aprende desde cero a crear fantásticos personajes en Blender. No necesitas conocimientos previos, lo ideal para comenzar con Blender.',
     description:
@@ -409,3 +409,14 @@ export const courses = [
   //   updatedAt: '2020-01-01',
   // },
 ];
+
+
+export const user = {
+  name: 'John Doe',
+  avatar: 'https://creativelayers.net/themes/educrat-html/img/general/avatar-1.png',
+  email: 'jhondoe@mail.com',
+  phone: '+34654789456',
+  country: 'Spain',
+  city: 'Madrid',
+  
+}

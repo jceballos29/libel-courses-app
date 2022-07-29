@@ -2,7 +2,7 @@
 
 const CategoryCard = ({category}) => {
   return (
-    <div className='w-[300px] h-[160px] rounded overflow-hidden shadow group cursor-pointer relative'>
+    <div className='w-full h-[160px] rounded overflow-hidden shadow group cursor-pointer relative'>
       <figure className='absolute top-0 left-0 w-full h-full bg-gray-600'>
         <img src={category.image} alt={category.name} className="w-full h-full object-cover object-center"/>
       </figure>

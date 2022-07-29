@@ -9,7 +9,7 @@ const SecondaryNewCard = ({ element }) => {
         <Image
           webp={element.imageWebp}
           src={element.image}
-          alt='impresion-3d-blender'
+          alt={element.title}
           className='w-full h-full object-cover object-center'
         />
       </figure>
