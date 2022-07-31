@@ -1,7 +1,7 @@
 /** @format */
 
 import InstructorCard from 'components/cards/InstructorCard';
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import {
   IoChevronBack,

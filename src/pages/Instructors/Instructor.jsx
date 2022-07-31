@@ -2,11 +2,13 @@
 
 import CourseCard from 'components/cards/CourseCard';
 import NotFound from 'pages/NotFound';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import { Helmet } from 'react-helmet';
-import { HiOutlinePlay } from 'react-icons/hi';
 import {
   IoCaretForward,
+  IoChevronBack,
+  IoChevronForward,
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoLinkedin,
@@ -20,6 +22,22 @@ const Instructor = () => {
   const { username } = useParams();
   const { instructors } = useSelector((state) => state.instructors);
   const [instructor, setInstructor] = useState(null);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 8;
+  const items = useMemo(() => {
+    if (!instructor) {
+      return [];
+    }
+    return instructor.courses;
+  }
+  , [instructor]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+  };
 
   useEffect(() => {
     const instructor = instructors.find(
@@ -27,6 +45,12 @@ const Instructor = () => {
     );
     setInstructor(instructor);
   }, [instructors, username]);
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, items]);
 
   return instructor ? (
     <div className='mt-16'>
@@ -66,45 +90,58 @@ const Instructor = () => {
               <h3 className='text-4xl'>{instructor.name}</h3>
               <p className='mb-5'>{instructor.title}</p>
               <div className='flex items-center space-x-4'>
-              {[
-                {
-                  Icon: IoLogoFacebook,
-                  url: instructor.social.facebook,
-                },
-                {
-                  Icon: IoLogoTwitter,
-                  webkitURL: instructor.social.twitter,
-                },
-                {
-                  Icon: IoLogoInstagram,
-                  url: instructor.social.instagram,
-                },
-                {
-                  Icon: IoLogoLinkedin,
-                  URL: instructor.social.linkedin,
-                },
-              ].map(({ Icon, url }, index) => (
-                <a
-                  href={url}
-                  target={'_blank'}
-                  rel='noreferrer'
-                  className='text-white cursor-pointer p-2 rounded-full hover:bg-white/10  duration-200'>
-                  <Icon size={20} />
-                </a>
-              ))}
-            </div>
+                {[
+                  {
+                    Icon: IoLogoFacebook,
+                    url: instructor.social.facebook,
+                  },
+                  {
+                    Icon: IoLogoTwitter,
+                    webkitURL: instructor.social.twitter,
+                  },
+                  {
+                    Icon: IoLogoInstagram,
+                    url: instructor.social.instagram,
+                  },
+                  {
+                    Icon: IoLogoLinkedin,
+                    URL: instructor.social.linkedin,
+                  },
+                ].map(({ Icon, url }, index) => (
+                  <a
+                    href={url}
+                    target={'_blank'}
+                    rel='noreferrer'
+                    className='text-white cursor-pointer p-2 rounded-full hover:bg-white/10  duration-200'>
+                    <Icon size={20} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </header>
         <div>
-        <h4 className='text-2xl font-bold mb-6'>
-          Cursos
-        </h4>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
-          {instructor.courses.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
+          <h4 className='text-2xl font-bold mb-6'>Cursos</h4>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
+            {currentItems &&
+              currentItems.map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+          </div>
+          <ReactPaginate
+            breakLabel='...'
+            nextLabel={<IoChevronForward size={18} />}
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            pageCount={pageCount}
+            previousLabel={<IoChevronBack size={18} />}
+            renderOnZeroPageCount={null}
+            containerClassName='flex items-center justify-center space-x-8 font-bold'
+            pageLinkClassName='hover:text-[#6440FB]'
+            previousLinkClassName='flex items-center justify-center w-10 h-10 rounded-full text-[#6440FB] bg-[#E5F0FD] hover:bg-[#6440FB] hover:text-white'
+            nextLinkClassName='flex items-center justify-center w-10 h-10 rounded-full text-[#6440FB] bg-[#E5F0FD] hover:bg-[#6440FB] hover:text-white'
+            activeLinkClassName='text-[#6440FB] underline underline-offset-4 decoration-2'
+          />
         </div>
       </div>
     </div>
