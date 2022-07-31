@@ -17,6 +17,7 @@ export const primaryNews = [
     category: 'Educación',
     title: 'Libel UP',
     date: 'Julio 4, 2022',
+    description: 'Aprende ZBrush en 15 días online y lo mejor "GRATIS"',
     image: libelUp,
     imageWebp: libelUpWebp,
     url: 'https://libel.academy/libel-up/'
@@ -26,6 +27,7 @@ export const primaryNews = [
     category: 'Educación',
     title: 'Campamento 3D',
     date: 'Octubre 2, 2022',
+    description: 'Logra en 60 DÍAS lo que muchos no logran en un año.',
     image: camp3D,
     imageWebp: camp3DWebp,
     url: 'https://libel.academy/3d-camp-1/'

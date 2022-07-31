@@ -21,13 +21,19 @@ const CourseCard = ({ course }) => {
           className='w-full h-full object-fill object-center group-hover:scale-125 duration-300'
         />
         <div className='absolute w-full h-full top-0 left-0 group-hover:bg-[#140342]/50 duration-300' />
-        <div className='absolute w-8 h-8 bg-white top-2 left-2 rounded cursor-pointer flex items-center justify-center z-[1]'>
+        <div className='absolute w-8 h-8 bg-white top-2 right-2 rounded cursor-pointer flex items-center justify-center z-[1]'>
           <IoBookmarkOutline size={20} />
         </div>
-        <div className='absolute bottom-2 left-2 flex items-center space-x-1'>
+        <div className='w-full absolute top-2 left-0 px-2 flex flex-col items-start space-y-1'>
           {course.featured && (
             <span className='text-[10px] text-white font-medium bg-purple-800 rounded-full px-2 py-1'>
               Destacado
+            </span>
+          )}
+          
+          {course.enrolledStudents.length > 100 && (
+            <span className='text-[10px] text-white font-medium bg-indigo-600 rounded-full px-2 py-1'>
+              Popular
             </span>
           )}
           {new Date(
@@ -35,11 +41,6 @@ const CourseCard = ({ course }) => {
           ).getTime() < new Date(course.createdAt).getTime() && (
             <span className='text-[10px] text-white font-medium bg-pink-600 rounded-full px-2 py-1'>
               Nuevo
-            </span>
-          )}
-          {course.enrolledStudents.length > 100 && (
-            <span className='text-[10px] text-white font-medium bg-indigo-600 rounded-full px-2 py-1'>
-              Popular
             </span>
           )}
         </div>
@@ -65,11 +66,13 @@ const CourseCard = ({ course }) => {
           </div>
           <span className='text-[#4F547B]'>({course.reviews})</span>
         </div>
+        
         <Link
           to={`${path.courses}/${course.slug}`}
           className='cursor-pointer h-[60px] font-semibold mb-2 group-hover:text-[#6440FB] hover:underline duration-300'>
           {course.name}
         </Link>
+
         <div className='text-[#4F547B] w-full flex items-center justify-between'>
           <div className='flex items-center'>
             <HiOutlineDocumentText

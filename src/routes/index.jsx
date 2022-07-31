@@ -34,6 +34,9 @@ const Feedbacks = lazy(() => import('pages/Courses/Feedbacks'));
 const Feedback = lazy(() => import('pages/Courses/Feedback'));
 const Login = lazy(() => import('pages/Login'));
 const Register = lazy(() => import('pages/Register'));
+const Instructors = lazy(() => import('pages/Instructors'));
+const Instructor = lazy(() => import('pages/Instructors/Instructor'));
+const BecomeAnInstructor = lazy(() => import('pages/BecomeAnInstructor'));
 const PrivacyPolicy = lazy(() => import('pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('pages/TermsConditions'));
 
@@ -54,13 +57,14 @@ export const path = {
   categories: '/categorias',
   login: '/ingreso',
   register: '/registro',
+  instructors: '/instructores',
+  become_a_instructor: '/conviertete-en-instructor',
   privacy_policy: '/politica-de-privacidad',
   terms_and_conditions: '/terminos-y-condiciones',
   portal: '/portal',
   process: '/portal/proceso',
   completed: '/portal/completados',
   favorites: '/portal/lista-de-deseos',
-  // expired: '/portal/expirados',
   certificates: '/portal/certificados',
   receipts: '/portal/recibos',
 };
@@ -178,6 +182,9 @@ const AppRoutes = () => {
 
         <Route path={path.login} element={<Login />} />
         <Route path={path.register} element={<Register />} />
+        <Route path={path.instructors} element={<Instructors />} />
+        <Route path={`${path.instructors}/:username`} element={<Instructor />} />
+        <Route path={path.become_a_instructor} element={<BecomeAnInstructor />} />
         <Route
           path={path.privacy_policy}
           element={<PrivacyPolicy />}

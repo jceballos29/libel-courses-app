@@ -5,12 +5,12 @@ import Image from 'react-image-webp';
 const SecondaryNewCard = ({ element }) => {
   return (
     <a href={element.url} className='group flex h-24 space-x-5'>
-      <figure className='w-24 rounded-lg aspect-square bg-[#E5F0FD] flex  overflow-hidden relative group'>
+      <figure className='w-24 rounded aspect-square bg-[#E5F0FD] flex  overflow-hidden relative'>
         <Image
           webp={element.imageWebp}
           src={element.image}
           alt={element.title}
-          className='w-full h-full object-cover object-center'
+          className='w-full h-full object-cover object-center group-hover:scale-125 group-hover:transition-all group-hover:duration-300 duration-300'
         />
       </figure>
       <div className='flex-1 flex flex-col items-start justify-center'>

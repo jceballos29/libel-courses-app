@@ -13,9 +13,13 @@ import LogoLibel from 'images/logo-libel.png';
 import LogoLibelWebp from 'images/logo-libel.webp';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
-import { categories } from 'utils/backend';
+import { useSelector } from 'react-redux';
+
 
 const Footer = () => {
+  
+  const { categories } = useSelector(state => state.categories);
+
   return (
     <footer className='w-full bg-gray-800 text-white'>
       <div className='container'>

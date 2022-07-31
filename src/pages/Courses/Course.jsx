@@ -46,7 +46,7 @@ const Course = () => {
   return course ? (
     <section className='mt-16 bg-[#F5F7FE]'>
       <Helmet>
-        <title>{course.name}</title>
+        <title>{course.name} | Libel Academy</title>
         <meta name='description' content={course.abstract} />
       </Helmet>
       <div className='hidden lg:block bg-white w-full h-12'>

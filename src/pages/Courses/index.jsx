@@ -1,6 +1,7 @@
 /** @format */
 
 import CourseCard from 'components/cards/CourseCard';
+import { Helmet } from 'react-helmet';
 import { IoEllipse } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
@@ -9,6 +10,9 @@ import { courses } from 'utils/backend';
 const Courses = () => {
   return (
     <section className='mt-16'>
+      <Helmet>
+        <title>Cursos | Libel Academy</title>
+      </Helmet>
       <div className='bg-[#F5F7FE] w-full h-12'>
         <div className='container h-full flex items-center space-x-4'>
           <Link

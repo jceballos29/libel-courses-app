@@ -25,19 +25,25 @@ import line2Webp from 'images/Line-2.webp';
 
 import CategoryCard from 'components/cards/CategoryCard';
 import CourseCard from 'components/cards/CourseCard';
-import InstructorCard from 'components/cards/InstructorCard';
-import FeaturedProjectCard from 'components/cards/FeaturedProjectCard';
+import InstructorCard from 'components/cards/InstructorHomeCard';
+// import FeaturedProjectCard from 'components/cards/FeaturedProjectCard';
 import PricingCard from 'components/cards/PricingCard';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
 import memberships from 'utils/memberships';
-import { categories, courses } from 'utils/backend';
+import { courses } from 'utils/backend';
 import { primaryNews, secondaryNews } from 'utils/news';
 import SecondaryNewCard from 'components/cards/SecondaryNewCard';
 import PrimaryNewCard from 'components/cards/PrimaryNewCard';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
+
 
 const Home = () => {
+  const { categories } = useSelector((state) => state.categories);
+  const { instructors } = useSelector((state) => state.instructors);
+
+
   return (
     <div>
       <Helmet>
@@ -157,53 +163,28 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
+        {/* <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
           <div className='container'>
             <div className='mb-10 lg:mb-16 flex flex-col items-start justify-between lg:flex-row lg:items-center'>
               <div className='mb-4 lg:mb-0'>
                 <h2>Estudiantes Destacados</h2>
-                {/* <p>Lorem ipsum dolor sit amet, consectetur.</p> */}
+                <p>Lorem ipsum dolor sit amet, consectetur.</p>
               </div>
             </div>
-            {/* <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 justify-items-center content-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 justify-items-center content-center'>
               {Array.from({ length: 4 }).map((_, index) => (
                 <FeaturedProjectCard key={index} />
               ))}
-            </div> */}
-          </div>
-        </section>
-        <section className='section border-b'>
-          <div className='container'>
-            <div className='mb-10 lg:mb-16 flex flex-col items-start justify-between lg:flex-row lg:items-center'>
-              <div className='mb-4 lg:mb-0'>
-                <h2>Aprende con los mejores</h2>
-              </div>
-              <button className='py-4 px-7 rounded-lg bg-[#6440FB]/10 text-[#6440FB] font-medium hover:bg-[#6440FB] hover:text-white duration-150 flex items-center'>
-                Todos los instructores{' '}
-                <HiOutlineArrowSmRight size={20} className='ml-3' />
-              </button>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-5 mb-20'>
-              {Array.from({ length: 4 }).map((_, index) => (
-                <InstructorCard key={index} />
-              ))}
-            </div>
-            <p className='w-[80%] md:w-full mx-auto text-center'>
-              ¿Quieres ayudar a las personas a aprender, crecer y ser
-              profesionales?{' '}
-              <span className='text-[#6440FB] cursor-pointer hover:underline'>
-                Conviértete en instructor.
-              </span>
-            </p>
           </div>
-        </section>
-        <section className='section'>
+        </section> */}
+        <section className='section bg-[#F5F7FE]  rounded-2xl'>
           <div className='container flex flex-col items-center justify-center'>
             <h2 className='mb-4'>¿Cómo Funciona?</h2>
             {/* <p>10,000+ unique online course list designs</p> */}
             <div className='w-full mt-14 flex flex-col md:flex-row gap-20 md:gap-0 items-center md:items-baseline justify-between'>
               <div className='w-80 flex flex-col items-center justify-center'>
-                <div className='w-28 h-28 bg-[#F7F8FB] mb-8 rounded-full relative flex items-center justify-center'>
+                <div className='w-28 h-28 bg-white mb-8 rounded-full relative flex items-center justify-center'>
                   <Image
                     webp={onlineCourse1Webp}
                     src={onlineCourse1}
@@ -231,7 +212,7 @@ const Home = () => {
                 />
               </div>
               <div className='w-80 flex flex-col items-center'>
-                <div className='w-28 h-28 bg-[#F7F8FB] mb-8 rounded-full relative flex items-center justify-center'>
+                <div className='w-28 h-28 bg-white mb-8 rounded-full relative flex items-center justify-center'>
                   <Image
                     webp={creditCard1Webp}
                     src={creditCard1}
@@ -260,7 +241,7 @@ const Home = () => {
                 />
               </div>
               <div className='w-80 flex flex-col items-center'>
-                <div className='w-28 h-28 bg-[#F7F8FB] mb-8 rounded-full relative flex items-center justify-center'>
+                <div className='w-28 h-28 bg-white mb-8 rounded-full relative flex items-center justify-center'>
                   <Image
                     webp={onlineLearning2Webp}
                     src={onlineLearning2}
@@ -279,6 +260,41 @@ const Home = () => {
                 </h5>
               </div>
             </div>
+          </div>
+        </section>
+        <section className='section'>
+          <div className='container'>
+            <div className='mb-10 lg:mb-16 flex flex-col items-start justify-between lg:flex-row lg:items-center'>
+              <div className='mb-4 lg:mb-0'>
+                <h2>Aprende con los mejores</h2>
+              </div>
+              <Link
+                to={path.instructors}
+                className='py-4 px-7 rounded-lg bg-[#6440FB]/10 text-[#6440FB] font-medium hover:bg-[#6440FB] hover:text-white duration-150 flex items-center'>
+                Todos los instructores{' '}
+                <HiOutlineArrowSmRight size={20} className='ml-3' />
+              </Link>
+            </div>
+            <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-5 mb-20'>
+              {[...instructors]
+                .sort((a, b) => b.courses.length - a.courses.length)
+                .slice(0, 4)
+                .map((instructor) => (
+                  <InstructorCard
+                    key={instructor._id}
+                    instructor={instructor}
+                  />
+                ))}
+            </div>
+            <p className='w-[80%] md:w-full mx-auto text-center'>
+              ¿Quieres ayudar a las personas a aprender, crecer y ser
+              profesionales?{' '}
+              <Link
+                to={path.become_a_instructor}
+                className='text-[#6440FB] cursor-pointer hover:underline'>
+                Conviértete en instructor.
+              </Link>
+            </p>
           </div>
         </section>
         <section className='section bg-[#F5F7FE]  rounded-2xl text-[#140342]'>
