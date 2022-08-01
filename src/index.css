@@ -53,6 +53,6 @@ html {
   }
 
   .section {
-    @apply py-12 md:py-28  overflow-hidden
+    @apply py-12  overflow-hidden
   }
 }

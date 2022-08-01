@@ -3,13 +3,14 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { IoCaretForward, IoEllipseOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import { path } from 'routes';
-import { courses } from 'utils/backend';
 import classNames from 'utils/classNames';
 
 const Lessons = () => {
   const { slug } = useParams();
+  const { courses } = useSelector(state => state.courses);
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
@@ -53,7 +54,7 @@ const Lessons = () => {
             <Outlet />
           </Suspense>
         </div>
-        <aside className='hidden lg:block bg-[#F5F7FE] w-80 px-4 pt-2'>
+        <aside className='hidden lg:block bg-[#F5F7FE] w-96 px-4 pt-2'>
           <h4 className='text-lg font-semibold mb-4'>
             {course.name}
           </h4>

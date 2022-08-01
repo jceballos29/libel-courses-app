@@ -9,11 +9,11 @@ import {
   IoChevronForward,
   IoEllipse,
 } from 'react-icons/io5';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
 import { Listbox, Transition } from '@headlessui/react';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 const sorted = [
   { id: 0, name: '-----' },
@@ -22,9 +22,9 @@ const sorted = [
 ];
 
 const Instructors = () => {
-  const { instructors } = useSelector((state) => state.instructors);
+  const [instructors, setInstructors] = useState([]);
   const [currentItems, setCurrentItems] = useState(null);
-  const [items, setItems] = useState(instructors);
+  const [items, setItems] = useState([]);
   const [sort, setSort] = useState(sorted[0]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -34,6 +34,14 @@ const Instructors = () => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const {data: response} = await axios.get('/instructors');
+      setInstructors(response.data);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -132,7 +140,8 @@ const Instructors = () => {
               </Listbox>
             </div>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center content-center mb-14'>
+          {
+            instructors.length > 0 ? (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center content-center mb-14'>
             {currentItems &&
               currentItems.map((instructor) => (
                 <InstructorCard
@@ -140,7 +149,12 @@ const Instructors = () => {
                   instructor={instructor}
                 />
               ))}
-          </div>
+          </div>) : (
+            <div>
+              <p className='text-left text-xl font-medium'>No hay instructores disponibles</p>
+            </div>
+          )
+          }
           <ReactPaginate
             breakLabel='...'
             nextLabel={<IoChevronForward size={18} />}

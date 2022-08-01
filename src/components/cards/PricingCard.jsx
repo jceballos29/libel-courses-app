@@ -4,7 +4,7 @@ import { HiOutlineCheck } from 'react-icons/hi';
 
 const PricingCard = ({ pricing }) => {
   return (
-    <div className='w-full lg:w-[410px] rounded shadow overflow-hidden'>
+    <div className='w-full rounded shadow overflow-hidden'>
       <div className='px-10 py-8 md:px-14 md:py-10 bg-[#1A064F] text-white relative'>
         <div className='text-center relative z-[1]'>
           <h5 className='text-base font-semibold'>{pricing.name}</h5>

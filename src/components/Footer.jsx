@@ -13,12 +13,10 @@ import LogoLibel from 'images/logo-libel.png';
 import LogoLibelWebp from 'images/logo-libel.webp';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
-import { useSelector } from 'react-redux';
 
 
 const Footer = () => {
   
-  const { categories } = useSelector(state => state.categories);
 
   return (
     <footer className='w-full bg-gray-800 text-white'>
@@ -68,7 +66,7 @@ const Footer = () => {
             ))}
           </ul>
 
-          <div className='lg:col-span-2'>
+          {/* <div className='lg:col-span-2'>
             <h3 className='uppercase font-medium mb-4'>Categorías</h3>
             <ul className='pl-4 grid grid-cols-2 lg:grid-cols-3 gap-2'>
               {
@@ -81,7 +79,7 @@ const Footer = () => {
                 ))
               }
             </ul>
-          </div>
+          </div> */}
           <div className='flex flex-col items-center justify-center space-y-4'>
             <button className='w-[250px] py-2 px-4 rounded-lg font-medium bg-[#6440FB] text-white accent-[#6440FB] duration-150 flex items-center justify-center'>
               Solicita Asesoría

@@ -118,7 +118,7 @@ export const courses = [
       {
         _id: 0,
         number: 1,
-        date: '2020-01-01',
+        title: '2020-01-01',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis metus vel velit laoreet blandit. Nunc ornare enim nec lectus cursus convallis. Nullam eget pharetra quam Proin eu nisl quis eros maximus pellentesque nec non sem. Cras nec tempus mi. Mauris commodo, ante vel feugiat commodo, magna orci ornare risus, at commodo mauris metus et felis.',
         duration: {

@@ -12,8 +12,7 @@ import { Link } from 'react-router-dom';
 import { path } from 'routes';
 
 
-const CourseCard = ({ element }) => {
-
+const InstructorCourseCard = ({ element }) => {
 
   return (
     <div
@@ -105,24 +104,9 @@ const CourseCard = ({ element }) => {
             <p className='text-xs leading-none'>{element.level}</p>
           </div>
         </div>
-        <div className='w-full flex items-center justify-between border-t pt-2 mt-2 '>
-          <div className='flex items-center'>
-            <figure className='w-8 h-8 rounded-full bg-gray-300 overflow-hidden mr-2'>
-              <img
-                src={element.instructor.avatar}
-                alt={element.instructor.name}
-                className='w-full h-full object-cover object-center'
-              />
-            </figure>
-            <p className='text-[#4F547B] text-xs'>
-              {element.instructor.name}
-            </p>
-          </div>
-          <h5>${element.price} USD</h5>
-        </div>
       </div>
     </div>
   );
 };
 
-export default CourseCard;
+export default InstructorCourseCard;

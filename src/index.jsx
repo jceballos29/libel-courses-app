@@ -11,6 +11,8 @@ import store from 'redux/store';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+import "video-react/dist/video-react.css"
+
 api.init();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

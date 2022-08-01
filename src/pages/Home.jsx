@@ -31,19 +31,34 @@ import PricingCard from 'components/cards/PricingCard';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
 import memberships from 'utils/memberships';
-import { courses } from 'utils/backend';
 import { primaryNews, secondaryNews } from 'utils/news';
 import SecondaryNewCard from 'components/cards/SecondaryNewCard';
 import PrimaryNewCard from 'components/cards/PrimaryNewCard';
 import { Helmet } from 'react-helmet';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
-const Home = () => {
-  const { categories } = useSelector((state) => state.categories);
-  const { instructors } = useSelector((state) => state.instructors);
+const Home = () => {  
 
+  const [categories, setCategories] = useState([])
+  const [courses, setCourses] = useState([])
+  const [instructors, setInstructors] = useState([])
 
+  // const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const {data: coursesResponse} = await axios.get('/courses');
+      const { data: categoriesResponse } = await axios.get('/categories');
+      const { data: instructorsResponse } = await axios.get('/instructors');
+      setCategories(categoriesResponse.data)
+      setCourses(coursesResponse.data)
+      setInstructors(instructorsResponse.data)
+    }
+    fetchData();
+  }, [])
+  
   return (
     <div>
       <Helmet>
@@ -54,7 +69,7 @@ const Home = () => {
         />
       </Helmet>
       <header
-        className='w-full bg-gray-200 relative text-white bg-no-repeat bg-cover bg-top-center'
+        className='w-full bg-gray-200 relative text-white bg-no-repeat bg-cover bg-center'
         style={{
           backgroundImage: `url(${
             isWebpSupported ? headerBackgroundWebp : headerBackground
@@ -79,30 +94,32 @@ const Home = () => {
       <div className='px-2 lg:px-6'>
         <section>
           <div className='container px-4 py-8 mx-auto flex flex-col md:flex-row gap-10 items-start justify-between '>
-            <div className='flex'>
+            <div className='flex items-center'>
               <Image
                 webp={onlineTraining1Webp}
                 src={onlineTraining1}
                 alt='logo'
-                width={50}
-                height={50}
+                // width={50}
+                // height={50}
+                className='w-[50px] h-[50px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]'
               />
               <div className='ml-4 flex flex-col items-start'>
-                <h3 className='text-xl'>500 Cursos en línea</h3>
-                <p>Explora nuestros cursos</p>
+                <h3 className='text-xl md:text-sm lg:text-xl'>500 Cursos en línea</h3>
+                <p className="text-base md:text-xs lg:text-base">Explora nuestros cursos</p>
               </div>
             </div>
-            <div className='flex'>
+            <div className='flex items-center'>
               <Image
                 webp={teacher1Webp}
                 src={teacher1}
                 alt='logo'
-                width={50}
-                height={50}
+                // width={50}
+                // height={50}
+                className='w-[50px] h-[50px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]'
               />
               <div className='ml-4 flex flex-col items-start'>
-                <h3 className='text-xl'>Instructores Expertos</h3>
-                <p>El correcto instructor para ti</p>
+                <h3 className='text-xl md:text-sm lg:text-xl'>Instructores Expertos</h3>
+                <p className="text-base md:text-xs lg:text-base">El correcto instructor para ti</p>
               </div>
             </div>
             <div className='flex'>
@@ -110,12 +127,13 @@ const Home = () => {
                 webp={web1Webp}
                 src={web1}
                 alt='logo'
-                width={50}
-                height={50}
+                // width={50}
+                // height={50}
+                className='w-[50px] h-[50px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]'
               />
               <div className='ml-4 flex flex-col items-start'>
-                <h3 className='mt-2 text-xl'>Feedback online</h3>
-                <p>Acompañamiento en vivo</p>
+                <h3 className='text-xl md:text-sm lg:text-xl'>Feedback online</h3>
+                <p className="text-base md:text-xs lg:text-base">Acompañamiento en vivo</p>
               </div>
             </div>
           </div>
@@ -131,19 +149,27 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
+            {
+              courses.length > 0 ? (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
               {courses.slice(0, 8).map((course) => (
-                <CourseCard key={course._id} course={course} />
+                <CourseCard key={course._id} element={course} />
               ))}
-            </div>
-            <div className='mt-14 w-full flex items-center justify-center'>
+            </div>) : (
+              <div className='flex flex-col items-center justify-center'>
+                <p className='text-center text-xl font-medium'>No hay cursos disponibles</p>
+              </div>
+            )
+            }
+            {
+              courses.length > 0 && (<div className='mt-14 w-full flex items-center justify-center'>
               <Link
                 to={path.courses}
                 className='py-4 px-7 rounded-lg bg-[#6440FB]/10 text-[#6440FB] font-medium hover:bg-[#6440FB] hover:text-white duration-150 flex items-center'>
                 Ver Cursos{' '}
                 <HiOutlineArrowSmRight size={20} className='ml-3' />
               </Link>
-            </div>
+            </div>)
+            }
           </div>
         </section>
         <section className='section'>
@@ -153,14 +179,18 @@ const Home = () => {
                 <h2 className='text-center'>Categorías</h2>
               </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
+            {
+              categories.length > 0 ? (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 justify-items-center content-center'>
               {categories.map((category) => (
                 <CategoryCard
                   key={category._id}
                   category={category}
                 />
               ))}
-            </div>
+            </div>) : (<div className='flex flex-col items-center justify-center'>
+                <p className='text-center text-xl font-medium'>No hay categorías disponibles</p>
+              </div>)
+            }
           </div>
         </section>
         {/* <section className='section bg-[#F5F7FE] rounded-2xl text-[#140342]'>
@@ -268,14 +298,17 @@ const Home = () => {
               <div className='mb-4 lg:mb-0'>
                 <h2>Aprende con los mejores</h2>
               </div>
-              <Link
-                to={path.instructors}
-                className='py-4 px-7 rounded-lg bg-[#6440FB]/10 text-[#6440FB] font-medium hover:bg-[#6440FB] hover:text-white duration-150 flex items-center'>
-                Todos los instructores{' '}
-                <HiOutlineArrowSmRight size={20} className='ml-3' />
-              </Link>
+              {
+                instructors.length > 0 && (<Link
+                  to={path.instructors}
+                  className='py-4 px-7 rounded-lg bg-[#6440FB]/10 text-[#6440FB] font-medium hover:bg-[#6440FB] hover:text-white duration-150 flex items-center'>
+                  Todos los instructores{' '}
+                  <HiOutlineArrowSmRight size={20} className='ml-3' />
+                </Link>)
+              }
             </div>
-            <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-5 mb-20'>
+            {
+              instructors.length > 0 ? (<div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-5 mb-20'>
               {[...instructors]
                 .sort((a, b) => b.courses.length - a.courses.length)
                 .slice(0, 4)
@@ -285,7 +318,12 @@ const Home = () => {
                     instructor={instructor}
                   />
                 ))}
+            </div>) : (
+              <div className='flex flex-col items-center justify-center mb-20'>
+              <p className='text-center text-xl font-medium'>No hay instructores disponibles</p>
             </div>
+            )
+            }
             <p className='w-[80%] md:w-full mx-auto text-center'>
               ¿Quieres ayudar a las personas a aprender, crecer y ser
               profesionales?{' '}
@@ -301,7 +339,7 @@ const Home = () => {
           <div className='container flex flex-col items-center justify-center'>
             <h2>Membresías</h2>
             <p>Aprende todo en un mismo lugar.</p>
-            <div className='mt-10 lg:mt-16 flex flex-col lg:flex-row items-center justify-center gap-5'>
+            <div className='mt-10 lg:mt-16 flex flex-col md:flex-row items-center justify-center gap-5'>
               {memberships.map((membership, index) => (
                 <PricingCard key={index} pricing={membership} />
               ))}
@@ -310,9 +348,8 @@ const Home = () => {
         </section>
         <section className='section'>
           <div className='container flex flex-col items-center justify-center mb-16'>
-            <h2 className='mb-4'>Próximamente</h2>
-          </div>
-          <div className='flex flex-wrap items-star justify-center gap-5 gap-y-10 '>
+            <h2 className='mb-10'>Próximamente</h2>
+          <div className='grid  lg:grid-cols-3 space-y-10 lg:space-y-0 lg:space-x-5 justify-items-center '>
             {primaryNews.map((element) => (
               <PrimaryNewCard key={element.id} element={element} />
             ))}
@@ -324,6 +361,7 @@ const Home = () => {
                 />
               ))}
             </div>
+          </div>
           </div>
         </section>
       </div>

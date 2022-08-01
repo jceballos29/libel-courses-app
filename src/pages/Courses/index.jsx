@@ -1,13 +1,34 @@
 /** @format */
 
+import axios from 'axios';
 import CourseCard from 'components/cards/CourseCard';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { IoEllipse } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { path } from 'routes';
-import { courses } from 'utils/backend';
 
 const Courses = () => {
+
+  // const { courses } = useSelector(state => state.courses);
+  // const [filter, setFilter] = useState(0);
+  const [courses, setCourses] = useState([])
+  // const [categories, setCategories] = useState([])
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: coursesResponse } = await axios.get(`/courses`);
+        setCourses(coursesResponse.data);
+      } catch (error) {
+        setCourses([]);
+      }
+    }
+    fetchData();
+  }, [])
+  
+
   return (
     <section className='mt-16'>
       <Helmet>
@@ -33,7 +54,7 @@ const Courses = () => {
           Inicia tu curva de aprendizaje con acompañamiento en vivo.
           </p>
           <div className='pt-24 flex items-center justify-between'>
-            <div className='w-72'></div>
+            <div className='hidden lg:block w-72'></div>
             <div className='flex-1'>
               <div className="flex items-center justify-between pb-8">
               <p className='text-sm text-[#4F547B]'>
@@ -43,7 +64,7 @@ const Courses = () => {
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center content-center'>
               {
                 courses.map((course) => (
-                  <CourseCard key={course._id} course={course} />
+                  <CourseCard key={course._id} element={course} />
                 ))
               }
               </div>
